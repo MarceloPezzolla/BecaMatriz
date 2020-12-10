@@ -9,21 +9,37 @@ namespace BecaMatriz
             // Cada Becario deverá criar um metódo para calcular a soma da diagonal principal de uma matriz quadrada 3 x 3 
             // O método deverá ter o nome do participante
             // exemplo: CalculaSomaDiagonalPrincipal_Ricardo();
-            int[,] matriz = new int[3, 3] { { 2, 1, 1 }, { 2, 3, 2 }, { 3, 3, 4 } };
-            CalculoSomaDiagonalPrincipal_Marcelo(matriz, 3);
-            Console.Read();
+            int[,] matriz = Matriz();
+            CalculoSomaDiagonalPrincipal_Marcelo(matriz);
+            Console.ReadLine();
+        }
+        public static int[,] Matriz()
+        {
+            Console.WriteLine("Quantas linhas e colunas na matriz quadrada? ");
+            int x = int.Parse(Console.ReadLine());
 
-            void CalculoSomaDiagonalPrincipal_Marcelo(int[,] mat, int n)
+            int[,] matriz = new int[x, x];
+            Console.WriteLine("Digite os numeros da matriz");
+
+            for (int i = 0; i < matriz.GetLength(0); i++)
             {
-                int principal = 0;
-                for (int i = 0; i <= n - 1; i++)
+                for (int j = 0; j < matriz.GetLength(1); j++)
                 {
-                    principal += mat[i, i];
+                    matriz[i, j] = int.Parse(Console.ReadLine());
                 }
-                Console.WriteLine("Soma diagonal pricipal = " + principal);
-
             }
+            return matriz;
+        }
 
+        public static void CalculoSomaDiagonalPrincipal_Marcelo(int[,] matriz)
+        {
+            int principal = 0;
+            for (int i = 0; i <= matriz.GetLength(0) - 1; i++)
+            {
+                principal += matriz[i, i];
+            }
+            Console.WriteLine("Soma diagonal pricipal = " + principal);
         }
     }
 }
+
